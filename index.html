@@ -81,7 +81,7 @@
                 <div class="w-8 h-8 rounded-full bg-egat-orange flex items-center justify-center text-sm font-bold">แอดมิน</div>
                 <div class="ml-3">
                     <p class="text-sm font-medium">สฟ.ฉะเชิงเทรา 2</p>
-                    <p class="text-xs text-white/50">อัปเดต: ล่าสุด</p>
+                    <p id="last-update-time" class="text-xs text-white/50">อัปเดต: กำลังโหลด...</p>
                 </div>
             </div>
         </div>
@@ -113,8 +113,8 @@
                     <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-sm text-slate-500 font-medium">ระดับน้ำ แม่น้ำบางปะกง</p>
-                            <h3 class="text-3xl font-bold text-slate-800 mt-1">1.85 <span class="text-sm font-normal text-slate-500">ม.รทก.</span></h3>
-                            <p class="text-xs text-red-500 mt-1 flex items-center"><i class="ph ph-trend-up mr-1"></i> เพิ่มขึ้น 0.15m ใน 24 ชม.</p>
+                            <h3 class="text-3xl font-bold text-slate-800 mt-1"><span id="current-water-level">1.85</span> <span class="text-sm font-normal text-slate-500">ม.รทก.</span></h3>
+                            <p class="text-xs text-slate-500 mt-1 flex items-center"><span class="relative flex h-2 w-2 mr-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span> เซ็นเซอร์ทำงาน (Real-time)</p>
                         </div>
                         <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-2xl">
                             <i class="ph-fill ph-waves"></i>
@@ -124,8 +124,8 @@
                     <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
                         <div>
                             <p class="text-sm text-slate-500 font-medium">ปริมาณน้ำฝนสะสม (24 ชม.)</p>
-                            <h3 class="text-3xl font-bold text-slate-800 mt-1">64.5 <span class="text-sm font-normal text-slate-500">มม.</span></h3>
-                            <p class="text-xs text-orange-500 mt-1 flex items-center"><i class="ph ph-cloud-rain mr-1"></i> ฝนตกหนักต่อเนื่อง</p>
+                            <h3 class="text-3xl font-bold text-slate-800 mt-1"><span id="current-rain">64.5</span> <span class="text-sm font-normal text-slate-500">มม.</span></h3>
+                            <p class="text-xs text-blue-500 mt-1 flex items-center"><i class="ph ph-cloud-rain mr-1"></i> อัปเดตล่าสุดจาก Open-Meteo</p>
                         </div>
                         <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 text-2xl">
                             <i class="ph-fill ph-cloud-rain"></i>
@@ -150,15 +150,15 @@
                             <div class="flex items-end mt-2 space-x-3">
                                 <div>
                                     <p class="text-xs text-blue-200">เวลาปัจจุบัน</p>
-                                    <h3 class="text-2xl font-bold text-white">1.85<span class="text-sm font-normal">ม.</span></h3>
+                                    <h3 class="text-2xl font-bold text-white"><span id="compare-now">1.85</span><span class="text-sm font-normal">ม.</span></h3>
                                 </div>
                                 <div class="pb-1 text-blue-200"><i class="ph-bold ph-caret-left"></i></div>
                                 <div>
                                     <p class="text-xs text-blue-200">เมื่อวานเวลานี้</p>
-                                    <h3 class="text-xl font-semibold text-white/80">1.70<span class="text-sm font-normal">ม.</span></h3>
+                                    <h3 class="text-xl font-semibold text-white/80"><span id="compare-yesterday">1.70</span><span class="text-sm font-normal">ม.</span></h3>
                                 </div>
                             </div>
-                            <div class="mt-3 inline-flex items-center px-2 py-1 rounded bg-white/20 text-xs font-medium">
+                            <div id="compare-trend" class="mt-3 inline-flex items-center px-2 py-1 rounded bg-white/20 text-xs font-medium">
                                 <i class="ph-bold ph-trend-up mr-1 text-red-300"></i> เพิ่มขึ้น +0.15 เมตร
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                         <div>
                                             <p class="text-sm font-medium text-slate-800">ยกระดับการเตือนภัย เป็น "สีส้ม"</p>
                                             <p class="text-xs text-slate-500 mt-1">ปริมาณน้ำฝนเกิน 60มม. ติดต่อกัน 12 ชม.</p>
-                                            <p class="text-xs text-slate-400 mt-1">วันนี้, 08:30 น.</p>
+                                            <p id="alert-time-1" class="text-xs text-slate-400 mt-1">วันนี้, 08:30 น.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -210,7 +210,7 @@
                                         <div>
                                             <p class="text-sm font-medium text-slate-800">ตรวจสอบปั๊มน้ำประจำจุด P1-P4</p>
                                             <p class="text-xs text-slate-500 mt-1">ทดสอบเดินเครื่องสูบน้ำ 100% ปกติ</p>
-                                            <p class="text-xs text-slate-400 mt-1">เมื่อวาน, 17:00 น.</p>
+                                            <p id="alert-time-2" class="text-xs text-slate-400 mt-1">เมื่อวาน, 17:00 น.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -220,7 +220,7 @@
                                         <div>
                                             <p class="text-sm font-medium text-slate-800">เตรียมรถบรรทุก 6 ล้อ จำนวน 2 คัน</p>
                                             <p class="text-xs text-slate-500 mt-1">สแตนด์บายสำหรับการขนย้ายพัสดุโซนต่ำ</p>
-                                            <p class="text-xs text-slate-400 mt-1">เมื่อวาน, 10:15 น.</p>
+                                            <p id="alert-time-3" class="text-xs text-slate-400 mt-1">เมื่อวาน, 10:15 น.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -374,6 +374,27 @@
         }
 
         // --- 3. Chart.js Initialization ---
+        let waterChartIns = null;
+        let rainChartIns = null;
+
+        function getDynamicDateLabels(pastDays, futureDays) {
+            const labels = [];
+            const today = new Date();
+            const thaiDays = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+            const thaiMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+            
+            for (let i = -pastDays; i <= futureDays; i++) {
+                const d = new Date();
+                d.setDate(today.getDate() + i);
+                if (i === 0) {
+                    labels.push(`${thaiDays[d.getDay()]} (วันนี้)`);
+                } else {
+                    labels.push(`${d.getDate()} ${thaiMonths[d.getMonth()]}`);
+                }
+            }
+            return labels;
+        }
+
         function initCharts() {
             // Shared config options
             Chart.defaults.font.family = '"Noto Sans Thai", sans-serif';
@@ -381,10 +402,10 @@
 
             // --- Water Level Chart ---
             const ctxWater = document.getElementById('waterLevelChart').getContext('2d');
-            new Chart(ctxWater, {
+            waterChartIns = new Chart(ctxWater, {
                 type: 'line',
                 data: {
-                    labels: ['วันที่ -2', 'เมื่อวาน', 'วันนี้ (Current)', 'พรุ่งนี้ (+1)', 'มะรืน (+2)', 'วันที่ +3', 'วันที่ +4'],
+                    labels: getDynamicDateLabels(2, 4), // ใช้ฟังก์ชันสร้าง Label วันที่แบบไดนามิก
                     datasets: [
                         {
                             label: 'ระดับน้ำจริง (ม.รทก.)',
@@ -430,7 +451,7 @@
             new Chart(ctxRain, {
                 type: 'bar',
                 data: {
-                    labels: ['อังคาร', 'พุธ', 'พฤหัส (วันนี้)', 'ศุกร์', 'เสาร์', 'อาทิตย์'],
+                    labels: getDynamicDateLabels(2, 4), // ใช้ฟังก์ชันสร้าง Label วันที่แบบไดนามิก
                     datasets: [{
                         label: 'ปริมาณฝนรายวัน (มม.)',
                         data: [15, 30, 64.5, 85, 45, 20],
@@ -456,11 +477,121 @@
             });
         }
 
+        // --- 4. Real-time Data Fetching (API + Telemetry Simulation) ---
+        async function fetchRealTimeData() {
+            try {
+                // ดึงข้อมูลสภาพอากาศและปริมาณน้ำฝนจริงจาก Open-Meteo API (พิกัด ฉะเชิงเทรา 13.69, 101.07)
+                const url = 'https://api.open-meteo.com/v1/forecast?latitude=13.69&longitude=101.07&current=precipitation&daily=precipitation_sum&past_days=2&forecast_days=5&timezone=Asia%2FBangkok';
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // 1. อัปเดตปริมาณน้ำฝนปัจจุบันบน Dashboard
+                const currentRain = data.current.precipitation;
+                document.getElementById('current-rain').innerText = currentRain.toFixed(1);
+
+                if (rainChartIns) {
+                    const today = new Date();
+                    const thaiDays = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+                    const thaiMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+                    
+                    const labels = data.daily.time.map(dateStr => {
+                        const d = new Date(dateStr);
+                        if (d.toDateString() === today.toDateString()) {
+                            return `${thaiDays[d.getDay()]} (วันนี้)`;
+                        }
+                        return `${d.getDate()} ${thaiMonths[d.getMonth()]}`;
+                    });
+                    
+                    rainChartIns.data.labels = labels;
+                    rainChartIns.data.datasets[0].data = data.daily.precipitation_sum;
+                    rainChartIns.update();
+
+                    // อัปเดต Label วันที่ของกราฟระดับน้ำให้ตรงกับวันจริงด้วย
+                    if (waterChartIns) {
+                        waterChartIns.data.labels = labels;
+                        waterChartIns.update();
+                    }
+                }
+
+                // 3. เรียกใช้ฟังก์ชันจำลองเซ็นเซอร์ระดับน้ำ
+                simulateWaterLevelTelemetry();
+
+            } catch (error) {
+                console.error("เกิดข้อผิดพลาดในการดึงข้อมูล Real-time:", error);
+            }
+        }
+
+        // ตัวแปรเก็บค่าระดับน้ำล่าสุดเพื่อสร้างความต่อเนื่องของการแสดงผล
+        let currentSimulatedWaterLevel = 1.85; 
+
+        function simulateWaterLevelTelemetry() {
+            // สร้างการแกว่งตัวของระดับน้ำ (Micro-fluctuations) +/- 0.02 เมตร เหมือนเซ็นเซอร์ IoT อ่านค่า
+            const noise = (Math.random() * 0.04) - 0.02; 
+            currentSimulatedWaterLevel = currentSimulatedWaterLevel + noise;
+            
+            // Limit ป้องกันไม่ให้ค่ากระโดดเกินจริง
+            if(currentSimulatedWaterLevel < 1.6) currentSimulatedWaterLevel = 1.65;
+            if(currentSimulatedWaterLevel > 2.5) currentSimulatedWaterLevel = 2.45;
+
+            const todayLvl = currentSimulatedWaterLevel;
+            const yesterdayLvl = 1.70; // กำหนดค่าของเมื่อวานไว้เปรียบเทียบ
+            const diff = todayLvl - yesterdayLvl;
+
+            // อัปเดตตัวเลขบน Dashboard
+            document.getElementById('current-water-level').innerText = todayLvl.toFixed(2);
+            document.getElementById('compare-now').innerText = todayLvl.toFixed(2);
+            document.getElementById('compare-yesterday').innerText = yesterdayLvl.toFixed(2);
+
+            // อัปเดตข้อความและสีของการเปรียบเทียบ 24 ชม.
+            const trendEl = document.getElementById('compare-trend');
+            if(diff > 0) {
+                trendEl.innerHTML = `<i class="ph-bold ph-trend-up mr-1 text-red-300"></i> เพิ่มขึ้น +${diff.toFixed(2)} เมตร`;
+            } else {
+                trendEl.innerHTML = `<i class="ph-bold ph-trend-down mr-1 text-green-300"></i> ลดลง ${Math.abs(diff).toFixed(2)} เมตร`;
+            }
+
+            // อัปเดตกราฟระดับน้ำ (เปลี่ยนเฉพาะจุดที่ 3 "วันนี้" ให้เป็น Real-time)
+            if (waterChartIns) {
+                waterChartIns.data.datasets[0].data[2] = todayLvl;
+                waterChartIns.update();
+            }
+        }
+
+        function updateRealTimeClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            
+            const thaiMonths = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+            const dateStr = `${now.getDate()} ${thaiMonths[now.getMonth()]} ${now.getFullYear() + 543}`;
+            
+            const clockEl = document.getElementById('last-update-time');
+            if(clockEl) {
+                clockEl.innerText = `อัปเดต: ${dateStr} ${timeStr} น.`;
+            }
+
+            // อัปเดตเวลา Alert ฉุกเฉินใบจำลอง ให้อิงจากเวลาปัจจุบัน (-2 ชั่วโมง)
+            const alert1 = document.getElementById('alert-time-1');
+            if(alert1 && !alert1.dataset.updated) {
+                const pastTime = new Date(now.getTime() - (2 * 60 * 60 * 1000));
+                alert1.innerText = `วันนี้, ${pastTime.toLocaleTimeString('th-TH', {hour: '2-digit', minute: '2-digit'})} น.`;
+                alert1.dataset.updated = "true";
+            }
+        }
+
         // --- Initialize Everything on Page Load ---
         window.onload = function() {
             initMap();
             initCharts();
-            // Dashboard is shown by default via HTML classes, map fix already applied in init
+            
+            // เริ่มต้นระบบนาฬิกา Real-time 
+            updateRealTimeClock();
+            setInterval(updateRealTimeClock, 1000);
+            
+            // เรียกใช้ฟังก์ชันดึงข้อมูลทันทีที่เปิดหน้าเว็บ
+            fetchRealTimeData();
+            
+            // ตั้งเวลาดึงข้อมูลใหม่ทุกๆ 5 วินาที เพื่อสร้างเอฟเฟกต์ Live IoT Dashboard
+            setInterval(fetchRealTimeData, 5000);
         };
 
     </script>
